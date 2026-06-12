@@ -76,19 +76,17 @@ export async function getFavoriteRecipes(): Promise<FavoriteRecipe[]> {
 
   const recipeMap = new Map(recipes.map(r => [r.id as string, r]))
 
-  return recipeIds
-    .map(id => {
-      const r = recipeMap.get(id)
-      if (!r) return null
-      return {
-        recipeId: r.id as string,
-        recipeName: r.name as string,
-        categoryId: r.category_id as string,
-        gradient: r.gradient as string,
-        imageUrl: (r.image_url as string | null) ?? undefined,
-        difficulty: r.difficulty as 'easy' | 'medium' | 'hard',
-        estimatedTime: r.estimated_time as string,
-      }
-    })
-    .filter((x): x is FavoriteRecipe => x !== null)
+  return recipeIds.flatMap(id => {
+    const r = recipeMap.get(id)
+    if (!r) return []
+    return [{
+      recipeId: r.id as string,
+      recipeName: r.name as string,
+      categoryId: r.category_id as string,
+      gradient: r.gradient as string,
+      imageUrl: (r.image_url as string | null) ?? undefined,
+      difficulty: r.difficulty as 'easy' | 'medium' | 'hard',
+      estimatedTime: r.estimated_time as string,
+    }]
+  })
 }
