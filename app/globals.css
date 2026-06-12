@@ -1,0 +1,76 @@
+/* ============================================================
+   Jabonera — Design Tokens + Global Reset
+   ============================================================ */
+
+:root {
+  --color-cream:    #FDF6EE;
+  --color-blush:    #F2C4C4;
+  --color-lavender: #D8D0E8;
+  --color-sage:     #C8D8C0;
+  --color-peach:    #F4C4A0;
+  --color-honey:    #E8C870;
+  --color-clay:     #C4846C;
+  --color-bark:     #4A3728;
+  --color-white:    #FFFFFF;
+  --color-muted:    #8C7B70;
+
+  --clay-700:   #A86A53;
+  --clay-100:   #F3E2D9;
+  --blush-50:   #FCF1F1;
+  --sage-50:    #F0F5EC;
+  --lavender-50:#F3F0F9;
+  --honey-50:   #FBF4DD;
+  --peach-50:   #FCEFE3;
+
+  --diff-easy:   #7FA86B;
+  --diff-medium: #E0A93C;
+  --diff-hard:   #C76B5A;
+
+  --font-display: var(--font-display-loaded, 'Playfair Display', Georgia, serif);
+  --font-body:    var(--font-body-loaded, 'Nunito', system-ui, sans-serif);
+
+  --r-sm:    10px;
+  --r-card:  16px;
+  --r-lg:    20px;
+  --r-modal: 24px;
+  --r-pill:  9999px;
+
+  --shadow-soft:  0 4px 24px rgba(74,55,40,0.08);
+  --shadow-card:  0 2px 12px rgba(74,55,40,0.06);
+  --shadow-lift:  0 12px 36px rgba(74,55,40,0.14);
+  --shadow-press: 0 1px 4px rgba(74,55,40,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-bark);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button { font-family: var(--font-body); cursor: pointer; }
+input, textarea, select { font-family: var(--font-body); }
+
+::selection { background: var(--color-peach); color: var(--color-bark); }
+
+.tex-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
